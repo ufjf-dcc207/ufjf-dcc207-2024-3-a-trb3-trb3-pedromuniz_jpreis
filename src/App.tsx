@@ -1,11 +1,11 @@
-import { useState } from 'react'
 import './App.css'
+import Campo from './Campo'
 
 function App() {
 
   return (
     <>
-      
+      <Campo></Campo>
     </>
   )
 }
