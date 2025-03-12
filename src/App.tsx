@@ -1,13 +1,12 @@
+import Campo from './Campo';
 import './App.css'
-import Campo from './Campo'
-
 function App() {
 
   return (
-    <>
-      <Campo></Campo>
-    </>
-  )
+    <div className='app'>
+      <Campo />
+    </div>
+  );
 }
 
-export default App
+export default App;

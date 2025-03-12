@@ -1,0 +1,12 @@
+.jogador-container {
+    text-align: center;
+  }
+  
+  .jogador-imagem {
+    width: 4.7vw;
+    height: 11vh;
+  }
+
+  #player {
+    width: 9vw;
+  }

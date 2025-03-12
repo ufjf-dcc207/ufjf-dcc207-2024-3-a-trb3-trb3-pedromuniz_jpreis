@@ -1,11 +1,16 @@
 .campo {
-    background-color: rgb(255, 255, 255);
+    background-image: url('https://st4.depositphotos.com/2210070/26752/i/450/depositphotos_267520844-stock-photo-top-view-of-soccer-field.jpg'); /* Caminho da imagem */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     height: 100vh;
-    width: 60vw;
+    width: 46vw;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(7, 1fr);
-    
+    grid-template-columns: repeat(5, 0.2fr);
+    grid-template-rows: repeat(7, 0.3fr);
+    justify-content: center;
+    align-items: center;
+
     .gol{
         grid-column: 3/4;
         grid-row: 7/8;

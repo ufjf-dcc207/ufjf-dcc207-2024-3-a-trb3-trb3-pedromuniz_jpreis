@@ -1,5 +1,7 @@
-#root {
-  width: 100vw;
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
-  background-color: aqua;
+  background-color: #5d00ff;
 }
