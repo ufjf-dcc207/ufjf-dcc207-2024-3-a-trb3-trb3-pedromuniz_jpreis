@@ -2,13 +2,25 @@ import { useState } from "react";
 import "./Campo.css";
 import QuatroTresTres from "./formacoes/4-3-3";
 import QuatroQuatroDois from "./formacoes/4-4-2";
-import TresCincoDois from "./formacoes/3-5-2";
+import TresQuatroTres from "./formacoes/3-4-3";
 
 // Grupos de posições
 const grupos = {
-  atacantes: ["pe", "ata", "pd"],
-  meias: ["vol", "mce", "mcd"],
-  zagueiros: ["zage", "zagd"],
+  atacantes: ["pe", "pe3", "ata", "atae2", "atad2", "ata3", "pd", "pd3"],
+  meias: [
+    "vol",
+    "vole2",
+    "vold2",
+    "vole3",
+    "vold3",
+    "mce",
+    "mcd",
+    "mce2",
+    "mcd2",
+    "mce3",
+    "mcd3",
+  ],
+  zagueiros: ["zage", "zagd", "zage3", "zagc3", "zagd3"],
 };
 
 // Tipo para as chaves de `grupos`
@@ -38,36 +50,52 @@ export default function Campo() {
       setSelectedPlayersByGroup((prev) => {
         const newSelectedPlayersByGroup = { ...prev };
 
+        // Remover jogador anterior da posição
         if (selectedPlayersByPosition[posicao]) {
           newSelectedPlayersByGroup[grupo].delete(
             selectedPlayersByPosition[posicao]
           );
         }
 
+        // Adicionar novo jogador se ele não estiver em outra posição
         if (playerName !== "Vazio") {
-          newSelectedPlayersByGroup[grupo].add(playerName);
+          const isAlreadySelected = Object.values(
+            selectedPlayersByPosition
+          ).includes(playerName);
+
+          if (!isAlreadySelected) {
+            newSelectedPlayersByGroup[grupo].add(playerName);
+            setSelectedPlayersByPosition((prev) => ({
+              ...prev,
+              [posicao]: playerName,
+            }));
+          }
+        } else {
+          // Se for "Vazio", apenas remove o jogador da posição
+          setSelectedPlayersByPosition((prev) => ({
+            ...prev,
+            [posicao]: "",
+          }));
         }
 
         return newSelectedPlayersByGroup;
       });
     }
-
-    setSelectedPlayersByPosition((prev) => ({
-      ...prev,
-      [posicao]: playerName,
-    }));
   };
 
-  const isPlayerSelected = (playerName: string, posicao: string) => {
-    const grupo = Object.keys(grupos).find((grupo) =>
-      grupos[grupo as GrupoKey].includes(posicao)
-    ) as GrupoKey | undefined;
+  const isPlayerSelected = (playerName: string) => {
+    return Object.values(selectedPlayersByPosition).includes(playerName);
+  };
 
-    if (grupo) {
-      return selectedPlayersByGroup[grupo].has(playerName);
-    }
-
-    return false;
+  // Resetar jogadores ao mudar a formação
+  const handleFormacaoChange = (novaFormacao: string) => {
+    setFormacao(novaFormacao);
+    setSelectedPlayersByGroup({
+      atacantes: new Set(),
+      meias: new Set(),
+      zagueiros: new Set(),
+    });
+    setSelectedPlayersByPosition({});
   };
 
   // Função para renderizar a formação escolhida
@@ -81,9 +109,9 @@ export default function Campo() {
             selectedPlayersByPosition={selectedPlayersByPosition}
           />
         );
-      case "3-5-2":
+      case "3-4-3":
         return (
-          <TresCincoDois
+          <TresQuatroTres
             handlePlayerSelect={handlePlayerSelect}
             isPlayerSelected={isPlayerSelected}
             selectedPlayersByPosition={selectedPlayersByPosition}
@@ -110,11 +138,11 @@ export default function Campo() {
         <select
           id="formacao-select"
           value={formacao}
-          onChange={(e) => setFormacao(e.target.value)}
+          onChange={(e) => handleFormacaoChange(e.target.value)}
         >
-          <option value="4-4-2">4-4-2</option>
           <option value="4-3-3">4-3-3</option>
-          <option value="3-5-2">3-5-2</option>
+          <option value="4-4-2">4-4-2</option>
+          <option value="3-4-3">3-4-3</option>
         </select>
       </div>
     </div>
