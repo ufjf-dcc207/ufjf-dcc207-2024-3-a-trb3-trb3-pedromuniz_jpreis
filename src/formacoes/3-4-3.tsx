@@ -1,14 +1,14 @@
 import React from "react";
 import Jogador from "../Jogador";
-import "./4-3-3.css";
+import "./3-4-3.css";
 
-interface TresCincoDoisProps {
+interface TresQuatroTresProps {
   handlePlayerSelect: (playerName: string, posicao: string) => void;
   isPlayerSelected: (playerName: string, posicao: string) => boolean;
   selectedPlayersByPosition: { [key: string]: string };
 }
 
-const TresCincoDois: React.FC<TresCincoDoisProps> = ({
+const TresQuatroTres: React.FC<TresQuatroTresProps> = ({
   handlePlayerSelect,
   isPlayerSelected,
   selectedPlayersByPosition,
@@ -16,17 +16,17 @@ const TresCincoDois: React.FC<TresCincoDoisProps> = ({
   return (
     <div className="campo">
       {[
-        { className: "gol", posicao: "goleiro" },
-        { className: "ld", posicao: "lateral_dir" },
-        { className: "zagd", posicao: "zagueiro" },
-        { className: "zage", posicao: "zagueiro" },
-        { className: "le", posicao: "lateral_esq" },
-        { className: "vol", posicao: "meio" },
-        { className: "mcd", posicao: "meio" },
-        { className: "mce", posicao: "meio" },
-        { className: "pd", posicao: "atacante" },
-        { className: "ata", posicao: "atacante" },
-        { className: "pe", posicao: "atacante" },
+        { className: "gol3", posicao: "goleiro" },
+        { className: "zage3", posicao: "zagueiro" },
+        { className: "zagc3", posicao: "zagueiro" },
+        { className: "zagd3", posicao: "zagueiro" },
+        { className: "vole3", posicao: "meio" },
+        { className: "vold3", posicao: "meio" },
+        { className: "mce3", posicao: "meio" },
+        { className: "mcd3", posicao: "meio" },
+        { className: "pe3", posicao: "atacante" },
+        { className: "ata3", posicao: "atacante" },
+        { className: "pd3", posicao: "atacante" },
       ].map(({ className, posicao }) => (
         <div key={className} className={className}>
           <Jogador
@@ -45,4 +45,4 @@ const TresCincoDois: React.FC<TresCincoDoisProps> = ({
   );
 };
 
-export default TresCincoDois;
+export default TresQuatroTres;

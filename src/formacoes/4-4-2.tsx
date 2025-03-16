@@ -16,17 +16,17 @@ const QuatroQuatroDois: React.FC<QuatroQuatroDois> = ({
   return (
     <div className="campo">
       {[
-        { className: "gol", posicao: "goleiro" },
-        { className: "ld", posicao: "lateral_dir" },
-        { className: "zagd", posicao: "zagueiro" },
-        { className: "zage", posicao: "zagueiro" },
-        { className: "le", posicao: "lateral_esq" },
-        { className: "vole", posicao: "meio" },
-        { className: "vold", posicao: "meio" },
-        { className: "mcd", posicao: "meio" },
-        { className: "mce", posicao: "meio" },
-        { className: "atae", posicao: "atacante" },
-        { className: "atad", posicao: "atacante" },
+        { className: "gol2", posicao: "goleiro" },
+        { className: "ld2", posicao: "lateral_dir" },
+        { className: "zagd2", posicao: "zagueiro" },
+        { className: "zage2", posicao: "zagueiro" },
+        { className: "le2", posicao: "lateral_esq" },
+        { className: "vole2", posicao: "meio" },
+        { className: "vold2", posicao: "meio" },
+        { className: "mcd2", posicao: "meio" },
+        { className: "mce2", posicao: "meio" },
+        { className: "atae2", posicao: "atacante" },
+        { className: "atad2", posicao: "atacante" },
       ].map(({ className, posicao }) => (
         <div key={className} className={className}>
           <Jogador
