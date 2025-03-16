@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Campo.css";
-import Jogador from "./Jogador";
+import QuatroTresTres from "./formacoes/4-3-3";
+import QuatroQuatroDois from "./formacoes/4-4-2";
 
 // Grupos de posições
 const grupos = {
@@ -37,7 +38,9 @@ export default function Campo() {
 
         // Remove o jogador anteriormente selecionado nesta posição
         if (selectedPlayersByPosition[posicao]) {
-          newSelectedPlayersByGroup[grupo].delete(selectedPlayersByPosition[posicao]);
+          newSelectedPlayersByGroup[grupo].delete(
+            selectedPlayersByPosition[posicao]
+          );
         }
 
         // Adiciona o novo jogador selecionado
@@ -69,95 +72,19 @@ export default function Campo() {
   };
 
   return (
-    <div className="campo">
-      <div className="gol">
-        <Jogador
-          posicao="goleiro"
-          onPlayerSelecionado={(playerName) => handlePlayerSelect(playerName, "goleiro")}
-          isPlayerSelecionado={(playerName) => isPlayerSelected(playerName, "goleiro")}
-          NomePlayerSelecionado={selectedPlayersByPosition["goleiro"]}
+    <div>
+      <div className="campo">
+        <QuatroQuatroDois
+          handlePlayerSelect={handlePlayerSelect}
+          isPlayerSelected={isPlayerSelected}
+          selectedPlayersByPosition={selectedPlayersByPosition}
         />
       </div>
-      <div className="ld">
-        <Jogador
-          posicao="lateral_dir"
-          onPlayerSelecionado={(playerName) => handlePlayerSelect(playerName, "lateral_dir")}
-          isPlayerSelecionado={(playerName) => isPlayerSelected(playerName, "lateral_dir")}
-          NomePlayerSelecionado={selectedPlayersByPosition["lateral_dir"]}
-        />
-      </div>
-      <div className="zagd">
-        <Jogador
-          posicao="zagueiro"
-          onPlayerSelecionado={(playerName) => handlePlayerSelect(playerName, "zagd")}
-          isPlayerSelecionado={(playerName) => isPlayerSelected(playerName, "zagd")}
-          NomePlayerSelecionado={selectedPlayersByPosition["zagd"]}
-        />
-      </div>
-      <div className="zage">
-        <Jogador
-          posicao="zagueiro"
-          onPlayerSelecionado={(playerName) => handlePlayerSelect(playerName, "zage")}
-          isPlayerSelecionado={(playerName) => isPlayerSelected(playerName, "zage")}
-          NomePlayerSelecionado={selectedPlayersByPosition["zage"]}
-        />
-      </div>
-      <div className="le">
-        <Jogador
-          posicao="lateral_esq"
-          onPlayerSelecionado={(playerName) => handlePlayerSelect(playerName, "lateral_esq")}
-          isPlayerSelecionado={(playerName) => isPlayerSelected(playerName, "lateral_esq")}
-          NomePlayerSelecionado={selectedPlayersByPosition["lateral_esq"]}
-        />
-      </div>
-      <div className="vol">
-        <Jogador
-          posicao="meio"
-          onPlayerSelecionado={(playerName) => handlePlayerSelect(playerName, "vol")}
-          isPlayerSelecionado={(playerName) => isPlayerSelected(playerName, "vol")}
-          NomePlayerSelecionado={selectedPlayersByPosition["vol"]}
-        />
-      </div>
-      <div className="mcd">
-        <Jogador
-          posicao="meio"
-          onPlayerSelecionado={(playerName) => handlePlayerSelect(playerName, "mcd")}
-          isPlayerSelecionado={(playerName) => isPlayerSelected(playerName, "mcd")}
-          NomePlayerSelecionado={selectedPlayersByPosition["mcd"]}
-        />
-      </div>
-      <div className="mce">
-        <Jogador
-          posicao="meio"
-          onPlayerSelecionado={(playerName) => handlePlayerSelect(playerName, "mce")}
-          isPlayerSelecionado={(playerName) => isPlayerSelected(playerName, "mce")}
-          NomePlayerSelecionado={selectedPlayersByPosition["mce"]}
-        />
-      </div>
-      <div className="pd">
-        <Jogador
-          posicao="atacante"
-          onPlayerSelecionado={(playerName) => handlePlayerSelect(playerName, "pd")}
-          isPlayerSelecionado={(playerName) => isPlayerSelected(playerName, "pd")}
-          NomePlayerSelecionado={selectedPlayersByPosition["pd"]}
-        />
-      </div>
-      <div className="ata">
-        <Jogador
-          posicao="atacante"
-          onPlayerSelecionado={(playerName) => handlePlayerSelect(playerName, "ata")}
-          isPlayerSelecionado={(playerName) => isPlayerSelected(playerName, "ata")}
-          NomePlayerSelecionado={selectedPlayersByPosition["ata"]}
-        />
-      </div>
-      <div className="pe">
-        <Jogador
-          posicao="atacante"
-          onPlayerSelecionado={(playerName) => handlePlayerSelect(playerName, "pe")}
-          isPlayerSelecionado={(playerName) => isPlayerSelected(playerName, "pe")}
-          NomePlayerSelecionado={selectedPlayersByPosition["pe"]}
-        />
-      </div>
+      <select className="slct_form">
+        <option value="433">4-3-3</option>
+        <option value="442">4-4-2</option>
+        <option value="451">4-5-1</option>
+      </select>
     </div>
   );
 }
