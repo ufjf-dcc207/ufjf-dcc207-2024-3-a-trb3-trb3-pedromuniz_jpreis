@@ -1,14 +1,14 @@
 import React from "react";
 import Jogador from "../Jogador";
-import "./4-4-2.css";
+import "./4-3-3.css";
 
-interface QuatroQuatroDois {
+interface TresCincoDoisProps {
   handlePlayerSelect: (playerName: string, posicao: string) => void;
   isPlayerSelected: (playerName: string, posicao: string) => boolean;
   selectedPlayersByPosition: { [key: string]: string };
 }
 
-const QuatroQuatroDois: React.FC<QuatroQuatroDois> = ({
+const TresCincoDois: React.FC<TresCincoDoisProps> = ({
   handlePlayerSelect,
   isPlayerSelected,
   selectedPlayersByPosition,
@@ -21,12 +21,12 @@ const QuatroQuatroDois: React.FC<QuatroQuatroDois> = ({
         { className: "zagd", posicao: "zagueiro" },
         { className: "zage", posicao: "zagueiro" },
         { className: "le", posicao: "lateral_esq" },
-        { className: "vole", posicao: "meio" },
-        { className: "vold", posicao: "meio" },
+        { className: "vol", posicao: "meio" },
         { className: "mcd", posicao: "meio" },
         { className: "mce", posicao: "meio" },
-        { className: "atae", posicao: "atacante" },
-        { className: "atad", posicao: "atacante" },
+        { className: "pd", posicao: "atacante" },
+        { className: "ata", posicao: "atacante" },
+        { className: "pe", posicao: "atacante" },
       ].map(({ className, posicao }) => (
         <div key={className} className={className}>
           <Jogador
@@ -45,4 +45,4 @@ const QuatroQuatroDois: React.FC<QuatroQuatroDois> = ({
   );
 };
 
-export default QuatroQuatroDois;
+export default TresCincoDois;

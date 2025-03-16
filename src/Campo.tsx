@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./Campo.css";
 import QuatroTresTres from "./formacoes/4-3-3";
 import QuatroQuatroDois from "./formacoes/4-4-2";
+import TresCincoDois from "./formacoes/3-5-2";
 
 // Grupos de posições
 const grupos = {
@@ -26,8 +27,9 @@ export default function Campo() {
     [key: string]: string;
   }>({});
 
+  const [formacao, setFormacao] = useState<string>("4-3-3");
+
   const handlePlayerSelect = (playerName: string, posicao: string) => {
-    // Encontra o grupo da posição atual
     const grupo = Object.keys(grupos).find((grupo) =>
       grupos[grupo as GrupoKey].includes(posicao)
     ) as GrupoKey | undefined;
@@ -36,14 +38,12 @@ export default function Campo() {
       setSelectedPlayersByGroup((prev) => {
         const newSelectedPlayersByGroup = { ...prev };
 
-        // Remove o jogador anteriormente selecionado nesta posição
         if (selectedPlayersByPosition[posicao]) {
           newSelectedPlayersByGroup[grupo].delete(
             selectedPlayersByPosition[posicao]
           );
         }
 
-        // Adiciona o novo jogador selecionado
         if (playerName !== "Vazio") {
           newSelectedPlayersByGroup[grupo].add(playerName);
         }
@@ -52,7 +52,6 @@ export default function Campo() {
       });
     }
 
-    // Atualiza o jogador selecionado nesta posição
     setSelectedPlayersByPosition((prev) => ({
       ...prev,
       [posicao]: playerName,
@@ -71,20 +70,53 @@ export default function Campo() {
     return false;
   };
 
+  // Função para renderizar a formação escolhida
+  const renderizarFormacao = () => {
+    switch (formacao) {
+      case "4-3-3":
+        return (
+          <QuatroTresTres
+            handlePlayerSelect={handlePlayerSelect}
+            isPlayerSelected={isPlayerSelected}
+            selectedPlayersByPosition={selectedPlayersByPosition}
+          />
+        );
+      case "3-5-2":
+        return (
+          <TresCincoDois
+            handlePlayerSelect={handlePlayerSelect}
+            isPlayerSelected={isPlayerSelected}
+            selectedPlayersByPosition={selectedPlayersByPosition}
+          />
+        );
+      case "4-4-2":
+      default:
+        return (
+          <QuatroQuatroDois
+            handlePlayerSelect={handlePlayerSelect}
+            isPlayerSelected={isPlayerSelected}
+            selectedPlayersByPosition={selectedPlayersByPosition}
+          />
+        );
+    }
+  };
+
   return (
-    <div>
-      <div className="campo">
-        <QuatroQuatroDois
-          handlePlayerSelect={handlePlayerSelect}
-          isPlayerSelected={isPlayerSelected}
-          selectedPlayersByPosition={selectedPlayersByPosition}
-        />
+    <div className="container">
+      <div className="campo">{renderizarFormacao()}</div>
+
+      <div className="selecao-formacao">
+        <label htmlFor="formacao-select">Escolha a formação:</label>
+        <select
+          id="formacao-select"
+          value={formacao}
+          onChange={(e) => setFormacao(e.target.value)}
+        >
+          <option value="4-4-2">4-4-2</option>
+          <option value="4-3-3">4-3-3</option>
+          <option value="3-5-2">3-5-2</option>
+        </select>
       </div>
-      <select className="slct_form">
-        <option value="433">4-3-3</option>
-        <option value="442">4-4-2</option>
-        <option value="451">4-5-1</option>
-      </select>
     </div>
   );
 }
