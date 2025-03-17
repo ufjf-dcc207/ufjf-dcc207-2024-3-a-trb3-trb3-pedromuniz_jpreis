@@ -25,6 +25,32 @@ select {
     border: 1px solid #ccc;
     cursor: pointer;
 }
+.overall-display {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 4vw; /* Posiciona à esquerda do campo */
+    top: 30%;
+    width: 20vw;
+}
+
+.overall-display h2 {
+    color: rgb(131, 16, 16);
+    font-size: 3vh;
+    font-weight: bold;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.mensagem-ganhou{
+    color: rgb(24, 216, 24);
+}
+.mensagem-perdeu{
+    color: red;
+}
+
 
 .campo {
     background-image: url('https://st4.depositphotos.com/2210070/26752/i/450/depositphotos_267520844-stock-photo-top-view-of-soccer-field.jpg'); /* Caminho da imagem */

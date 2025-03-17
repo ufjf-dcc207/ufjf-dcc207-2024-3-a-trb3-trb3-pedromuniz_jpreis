@@ -1,165 +1,187 @@
 {
-    "posicoes":
-    
-        {
-            "goleiro":
-            [
-                {
-                    "nome": "Vazio",
-                    "card": "https://futcardsfifa.com/app/uploads/2024/09/FC25-Gold.png"
-                },
-                {
-                    "nome": "Alisson",
-                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/212831.png?width=265"
-                },
-                {
-                    "nome": "Bento",
-                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/73562.png?width=250"
-                },
-                {
-                    "nome": "Ederson",
-                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/210257.png?width=265"
-                },
-                {
-                    "nome": "Lucas Perri",
-                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/230670.png?width=265"
-                }
-            ],
-
-            "zagueiro":
-            [
-                {
-                    "nome": "Vazio",
-                    "card": "https://futcardsfifa.com/app/uploads/2024/09/FC25-Gold.png"
-                },
-                {
-                    "nome": "Marquinhos",
-                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/207865.png?width=265"
-                },
-                {
-                    "nome": "Gabriel Magalhães",
-                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/232580.png?width=265"
-                },
-                {
-                    "nome": "Murillo",
-                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/278016.png?width=265"
-                },
-                {
-                    "nome": "Danilo",
-                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/199304.png?width=265"
-                },
-                {
-                    "nome": "Bremer",
-                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/239580.png?width=265"
-                },
-                {
-                    "nome": "Éder Militão",
-                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/240130.png?width=265"
-                }
-            ],
-
-            "lateral_dir":
-            [
-                {
-                    "nome": "Vazio",
-                    "card": "https://futcardsfifa.com/app/uploads/2024/09/FC25-Gold.png"
-                },
-                {
-                    "nome": "Vanderson",
-                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/263781.png?width=265"
-                },
-                {
-                    "nome": "Rodinei",
-                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/212091.png?width=265"
-                },
-                {
-                    "nome": "Emerson Royal",
-                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/212091.png?width=265"
-                },
-                {
-                    "nome": "Dodô",
-                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/234112.png?width=265"
-                }
-            ],
-
-            "lateral_esq":
-            [
-                {
-                    "nome": "Vazio",
-                    "card": "https://futcardsfifa.com/app/uploads/2024/09/FC25-Gold.png"
-                },
-                {
-                    "nome": "Caio Henrique",
-                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/232440.png?width=265"
-                },
-                {
-                    "nome": "Carlos Augusto",
-                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/258648.png?width=265"
-                },
-                {
-                    "nome": "Samuel Lino",
-                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/251445.png?width=250"
-                },
-                {
-                    "nome": "Renan Lodi",
-                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/251573.png?width=265"
-                }
-            ],
-
-            "meio":
-            [
-                {
-                    "nome": "Vazio",
-                    "card": "https://futcardsfifa.com/app/uploads/2024/09/FC25-Gold.png"
-                },
-                {
-                    "nome": "Casemiro",
-                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/200145.png?width=265"
-                },
-                {
-                    "nome": "Bruno Guimarães",
-                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/247851.png?width=265"
-                },
-                {
-                    "nome": "Joelinton",
-                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/223334.png?width=265"
-                },
-                {
-                    "nome": "Matheus Cunha",
-                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/240243.png?width=265"
-                },
-                {
-                    "nome": "Neymar",
-                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/190871.png?width=265"
-                }
-                
+    "posicoes": {
+        "goleiro": [
+            {
+                "nome": "Vazio",
+                "card": "https://futcardsfifa.com/app/uploads/2024/09/FC25-Gold.png",
+                "overall": null
+            },
+            {
+                "nome": "Alisson",
+                "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/212831.png?width=265",
+                "overall": 89
+            },
+            {
+                "nome": "Bento",
+                "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/73562.png?width=250",
+                "overall": 80
+            },
+            {
+                "nome": "Ederson",
+                "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/210257.png?width=265",
+                "overall": 88
+            },
+            {
+                "nome": "Lucas Perri",
+                "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/230670.png?width=265",
+                "overall": 78
+            }
+        ],
+        "zagueiro": [
+            {
+                "nome": "Vazio",
+                "card": "https://futcardsfifa.com/app/uploads/2024/09/FC25-Gold.png",
+                "overall": null
+            },
+            {
+                "nome": "Marquinhos",
+                "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/207865.png?width=265",
+                "overall": 87
+            },
+            {
+                "nome": "Gabriel Magalhães",
+                "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/232580.png?width=265",
+                "overall": 86
+            },
+            {
+                "nome": "Murillo",
+                "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/278016.png?width=265",
+                "overall": 78
+            },
+            {
+                "nome": "Danilo",
+                "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/199304.png?width=265",
+                "overall": 82
+            },
+            {
+                "nome": "Bremer",
+                "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/239580.png?width=265",
+                "overall": 86
+            },
+            {
+                "nome": "Éder Militão",
+                "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/240130.png?width=265",
+                "overall": 85
+            }
+        ],
+        "lateral_dir": [
+            {
+                "nome": "Vazio",
+                "card": "https://futcardsfifa.com/app/uploads/2024/09/FC25-Gold.png",
+                "overall": null
+            },
+            {
+                "nome": "Vanderson",
+                "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/263781.png?width=265",
+                "overall": 77
+            },
+            {
+                "nome": "Rodinei",
+                "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/212091.png?width=265",
+                "overall": 77
+            },
+            {
+                "nome": "Emerson Royal",
+                "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/212091.png?width=265",
+                "overall": 78
+            },
+            {
+                "nome": "Dodô",
+                "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/234112.png?width=265",
+                "overall": 77
+            }
+        ],
+        "lateral_esq": [
+            {
+                "nome": "Vazio",
+                "card": "https://futcardsfifa.com/app/uploads/2024/09/FC25-Gold.png",
+                "overall": null
+            },
+            {
+                "nome": "Caio Henrique",
+                "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/232440.png?width=265",
+                "overall": 78
+            },
+            {
+                "nome": "Carlos Augusto",
+                "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/258648.png?width=265",
+                "overall": 79
+            },
+            {
+                "nome": "Samuel Lino",
+                "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/251445.png?width=250",
+                "overall": 79
+            },
+            {
+                "nome": "Renan Lodi",
+                "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/251573.png?width=265",
+                "overall": 77
+            }
+        ],
+        "meio": [
+            {
+                "nome": "Vazio",
+                "card": "https://futcardsfifa.com/app/uploads/2024/09/FC25-Gold.png",
+                "overall": null
+            },
+            {
+                "nome": "Casemiro",
+                "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/200145.png?width=265",
+                "overall": 84
+            },
+            {
+                "nome": "Bruno Guimarães",
+                "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/247851.png?width=265",
+                "overall": 85
+            },
+            {
+                "nome": "Joelinton",
+                "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/223334.png?width=265",
+                "overall": 82
+            },
+            {
+                "nome": "Matheus Cunha",
+                "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/240243.png?width=265",
+                "overall": 79
+            },
+            {
+                "nome": "Neymar",
+                "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/190871.png?width=265",
+                "overall": 87
+            }
             ],
 
             "atacante":
             [
                 {
                     "nome": "Vazio",
-                    "card": "https://futcardsfifa.com/app/uploads/2024/09/FC25-Gold.png"
+                    "card": "https://futcardsfifa.com/app/uploads/2024/09/FC25-Gold.png",
+                    "overall": null
                 },
                 {
                     "nome": "João Pedro",
-                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/252042.png?width=265"
+                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/252042.png?width=265",
+                    "overall": 77
                 },
                 {
                     "nome": "Raphinha",
-                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/233419.png?width=265"
+                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/233419.png?width=265",
+                    "overall": 84
                 },
                 {
                     "nome": "Rodrygo",
-                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/243812.png?width=265"
+                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/243812.png?width=265",
+                    "overall": 86
                 },
                 {
                     "nome": "Savinho",
-                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/270409.png?width=265"
+                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/270409.png?width=265",
+                    "overall": 82
                 },
                 {
                     "nome": "Vinicius Júnior",
-                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/238794.png?width=265"
+                    "card": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-shields/pt-br/238794.png?width=265",
+                    "overall": 90
                 }
             ]
         }

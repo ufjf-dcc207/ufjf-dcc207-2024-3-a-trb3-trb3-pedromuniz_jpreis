@@ -1,8 +1,9 @@
-import { useReducer, useEffect, useRef } from "react";
+import { useReducer, useEffect, useRef, useState } from "react";
 import "./Campo.css";
 import QuatroTresTres from "./formacoes/4-3-3";
 import QuatroQuatroDois from "./formacoes/4-4-2";
 import TresQuatroTres from "./formacoes/3-4-3";
+import json from "./jogadores.json"; // Importando o JSON com os jogadores
 
 // Grupos de posições
 const grupos = {
@@ -23,12 +24,16 @@ const grupos = {
   zagueiros: ["zage", "zagd", "zage3", "zagc3", "zagd3"],
 };
 
-// Tipo para as chaves de `grupos`
 type GrupoKey = keyof typeof grupos;
+
+interface Player {
+  nome: string;
+  card: string;
+  overall: number | null;
+}
 
 interface State {
   formacao: string;
-  selectedPlayersByGroup: { [key in GrupoKey]: Set<string> };
   selectedPlayersByPosition: { [key: string]: string };
 }
 
@@ -39,69 +44,32 @@ type Action =
 
 const initialState: State = {
   formacao: "4-3-3",
-  selectedPlayersByGroup: {
-    atacantes: new Set(),
-    meias: new Set(),
-    zagueiros: new Set(),
-  },
   selectedPlayersByPosition: {},
 };
 
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
     case "SET_FORMACAO":
-      return { ...state, formacao: action.payload };
-    case "SELECT_PLAYER":
-      const { playerName, posicao } = action.payload;
-      const grupo = Object.keys(grupos).find((grupo) =>
-        grupos[grupo as GrupoKey].includes(posicao)
-      ) as GrupoKey | undefined;
-
-      if (grupo) {
-        const newSelectedPlayersByGroup = { ...state.selectedPlayersByGroup };
-
-        // Remover jogador anterior da posição
-        if (state.selectedPlayersByPosition[posicao]) {
-          newSelectedPlayersByGroup[grupo].delete(
-            state.selectedPlayersByPosition[posicao]
-          );
-        }
-
-        // Adicionar novo jogador se ele não estiver em outra posição
-        if (playerName !== "Vazio") {
-          const isAlreadySelected = Object.values(
-            state.selectedPlayersByPosition
-          ).includes(playerName);
-
-          if (!isAlreadySelected) {
-            newSelectedPlayersByGroup[grupo].add(playerName);
-            return {
-              ...state,
-              selectedPlayersByGroup: newSelectedPlayersByGroup,
-              selectedPlayersByPosition: {
-                ...state.selectedPlayersByPosition,
-                [posicao]: playerName,
-              },
-            };
-          }
-        } else {
-          return {
-            ...state,
-            selectedPlayersByGroup: newSelectedPlayersByGroup,
-            selectedPlayersByPosition: {
-              ...state.selectedPlayersByPosition,
-              [posicao]: "",
-            },
-          };
-        }
-      }
-      return state;
-    case "RESET_PLAYERS":
       return {
         ...state,
-        selectedPlayersByGroup: initialState.selectedPlayersByGroup,
-        selectedPlayersByPosition: initialState.selectedPlayersByPosition,
+        formacao: action.payload,
+        selectedPlayersByPosition: {},
       };
+
+    case "SELECT_PLAYER": {
+      const { playerName, posicao } = action.payload;
+      return {
+        ...state,
+        selectedPlayersByPosition: {
+          ...state.selectedPlayersByPosition,
+          [posicao]: playerName === "Vazio" ? "" : playerName,
+        },
+      };
+    }
+
+    case "RESET_PLAYERS":
+      return { ...state, selectedPlayersByPosition: {} };
+
     default:
       return state;
   }
@@ -109,17 +77,44 @@ const reducer = (state: State, action: Action): State => {
 
 export default function Campo() {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [totalOverall, setTotalOverall] = useState(0);
+  const [showButton, setShowButton] = useState(false);
   const selectRef = useRef<HTMLSelectElement>(null);
+
+  // Função para calcular o overall total
+  const calcularOverall = () => {
+    let overallSoma = 0;
+
+    Object.values(state.selectedPlayersByPosition).forEach((playerName) => {
+      const playerData = Object.values(json.posicoes)
+        .flat()
+        .find((player) => player.nome === playerName);
+
+      if (playerData && playerData.overall) {
+        overallSoma += playerData.overall;
+      }
+    });
+
+    setTotalOverall(overallSoma);
+  };
 
   const handlePlayerSelect = (playerName: string, posicao: string) => {
     dispatch({ type: "SELECT_PLAYER", payload: { playerName, posicao } });
+
+    // Verifica se todas as 11 posições estão preenchidas
+    const filledPositions =
+      Object.values({
+        ...state.selectedPlayersByPosition,
+        [posicao]: playerName,
+      }).filter((name) => name !== "").length === 11;
+
+    setShowButton(filledPositions);
   };
 
   const isPlayerSelected = (playerName: string) => {
     return Object.values(state.selectedPlayersByPosition).includes(playerName);
   };
 
-  // Função para renderizar a formação escolhida
   const renderizarFormacao = () => {
     switch (state.formacao) {
       case "4-3-3":
@@ -157,20 +152,40 @@ export default function Campo() {
     }
   };
 
-  // Resetar jogadores quando a formação mudar
   useEffect(() => {
     dispatch({ type: "RESET_PLAYERS" });
 
-    // Focar no select após mudar a formação
     if (selectRef.current) {
       selectRef.current.focus();
     }
+
+    setShowButton(false); // Esconde o botão ao trocar formação
+    setTotalOverall(0); // Reseta o overall ao mudar formação
   }, [state.formacao]);
 
   return (
     <div className="container">
+      <div className="overall-display">
+        <h2>Overall Total: {totalOverall}</h2>
+        {showButton && (
+          <button onClick={calcularOverall}>Calcular Overall</button>
+        )}
+        {totalOverall > 0 && (
+          <h3
+            className={
+              totalOverall > 900 ? "mensagem-ganhou" : "mensagem-perdeu"
+            }
+          >
+            {totalOverall > 900
+              ? "Você Ganhou!! Seu time fez mais que 900 pontos."
+              : "Você não atingiu a pontuação necessária. Tente novamente!"}
+          </h3>
+        )}
+      </div>
+
       <div className="campo">{renderizarFormacao()}</div>
 
+      {/* Seleção de formação */}
       <div className="selecao-formacao">
         <label htmlFor="formacao-select">Escolha a formação:</label>
         <select

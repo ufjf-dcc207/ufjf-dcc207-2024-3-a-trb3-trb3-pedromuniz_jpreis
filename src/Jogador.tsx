@@ -6,6 +6,7 @@ import "./Jogador.css";
 interface Player {
   nome: string; // Nome do jogador
   card: string; // URL da imagem do card do jogador
+  overall: number | null; // pode ser null para vazio
 }
 
 // Interface que define as propriedades do componente Jogador
@@ -28,11 +29,11 @@ export default function Jogador({
   isPlayerSelecionado,
   NomePlayerSelecionado,
 }: PlayerProps) {
-
   // Estado que armazena o jogador selecionado atualmente
   const [PlayerSelecionado, setPlayerSelecionado] = useState<Player>({
     nome: "Vazio", // Valor inicial: "Vazio"
     card: "https://futcardsfifa.com/app/uploads/2024/09/FC25-Gold.png", // Imagem padrão para "Vazio"
+    overall: null, //valor inicial
   });
 
   // Extrai as posições e jogadores do arquivo JSON importado
@@ -47,7 +48,8 @@ export default function Jogador({
       (p: Player) => p.nome === nomePlayer
     ) || {
       nome: "Vazio", // Se não encontrar, usa o valor padrão "Vazio"
-      card: "https://futcardsfifa.com/app/uploads/2024/09/FC25-Gold.png", // Imagem padrão para "Vazio"
+      card: "https://futcardsfifa.com/app/uploads/2024/09/FC25-Gold.png",
+      overall: null, // Imagem padrão para "Vazio"
     };
 
     // Atualiza o estado do jogador selecionado
@@ -61,9 +63,9 @@ export default function Jogador({
   const filteredPlayers = positions[posicao].filter(
     (player) =>
       player.nome !== "Vazio" && // Remove a opção "Vazio" da lista de jogadores
-      (!isPlayerSelecionado(player.nome) || player.nome === NomePlayerSelecionado) // Mantém o jogador selecionado nesta posição
+      (!isPlayerSelecionado(player.nome) ||
+        player.nome === NomePlayerSelecionado) // Mantém o jogador selecionado nesta posição
   );
-
 
   return (
     <div className="jogador-container">
