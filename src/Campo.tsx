@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Campo.css";
 import QuatroTresTres from "./formacoes/4-3-3";
 import QuatroQuatroDois from "./formacoes/4-4-2";
@@ -27,6 +27,7 @@ const grupos = {
 type GrupoKey = keyof typeof grupos;
 
 export default function Campo() {
+  const [formacao, setFormacao] = useState<string>("4-3-3");
   const [selectedPlayersByGroup, setSelectedPlayersByGroup] = useState<{
     [key in GrupoKey]: Set<string>;
   }>({
@@ -34,12 +35,9 @@ export default function Campo() {
     meias: new Set(),
     zagueiros: new Set(),
   });
-
   const [selectedPlayersByPosition, setSelectedPlayersByPosition] = useState<{
     [key: string]: string;
   }>({});
-
-  const [formacao, setFormacao] = useState<string>("4-3-3");
 
   const handlePlayerSelect = (playerName: string, posicao: string) => {
     const grupo = Object.keys(grupos).find((grupo) =>
@@ -87,17 +85,6 @@ export default function Campo() {
     return Object.values(selectedPlayersByPosition).includes(playerName);
   };
 
-  // Resetar jogadores ao mudar a formação
-  const handleFormacaoChange = (novaFormacao: string) => {
-    setFormacao(novaFormacao);
-    setSelectedPlayersByGroup({
-      atacantes: new Set(),
-      meias: new Set(),
-      zagueiros: new Set(),
-    });
-    setSelectedPlayersByPosition({});
-  };
-
   // Função para renderizar a formação escolhida
   const renderizarFormacao = () => {
     switch (formacao) {
@@ -129,6 +116,16 @@ export default function Campo() {
     }
   };
 
+  // Resetar jogadores quando a formação mudar
+  useEffect(() => {
+    setSelectedPlayersByGroup({
+      atacantes: new Set(),
+      meias: new Set(),
+      zagueiros: new Set(),
+    });
+    setSelectedPlayersByPosition({});
+  }, [formacao]); // O useEffect roda sempre que `formacao` mudar
+
   return (
     <div className="container">
       <div className="campo">{renderizarFormacao()}</div>
@@ -138,7 +135,7 @@ export default function Campo() {
         <select
           id="formacao-select"
           value={formacao}
-          onChange={(e) => handleFormacaoChange(e.target.value)}
+          onChange={(e) => setFormacao(e.target.value)}
         >
           <option value="4-3-3">4-3-3</option>
           <option value="4-4-2">4-4-2</option>
