@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./Campo.css";
 import QuatroTresTres from "./formacoes/4-3-3";
 import QuatroQuatroDois from "./formacoes/4-4-2";
