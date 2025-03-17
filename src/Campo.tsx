@@ -3,34 +3,7 @@ import "./Campo.css";
 import QuatroTresTres from "./formacoes/4-3-3";
 import QuatroQuatroDois from "./formacoes/4-4-2";
 import TresQuatroTres from "./formacoes/3-4-3";
-import json from "./jogadores.json"; // Importando o JSON com os jogadores
-
-// Grupos de posições
-const grupos = {
-  atacantes: ["pe", "pe3", "ata", "atae2", "atad2", "ata3", "pd", "pd3"],
-  meias: [
-    "vol",
-    "vole2",
-    "vold2",
-    "vole3",
-    "vold3",
-    "mce",
-    "mcd",
-    "mce2",
-    "mcd2",
-    "mce3",
-    "mcd3",
-  ],
-  zagueiros: ["zage", "zagd", "zage3", "zagc3", "zagd3"],
-};
-
-type GrupoKey = keyof typeof grupos;
-
-interface Player {
-  nome: string;
-  card: string;
-  overall: number | null;
-}
+import json from "./jogadores.json";
 
 interface State {
   formacao: string;
@@ -81,7 +54,6 @@ export default function Campo() {
   const [showButton, setShowButton] = useState(false);
   const selectRef = useRef<HTMLSelectElement>(null);
 
-  // Função para calcular o overall total
   const calcularOverall = () => {
     let overallSoma = 0;
 
@@ -101,7 +73,6 @@ export default function Campo() {
   const handlePlayerSelect = (playerName: string, posicao: string) => {
     dispatch({ type: "SELECT_PLAYER", payload: { playerName, posicao } });
 
-    // Verifica se todas as 11 posições estão preenchidas
     const filledPositions =
       Object.values({
         ...state.selectedPlayersByPosition,
@@ -159,8 +130,8 @@ export default function Campo() {
       selectRef.current.focus();
     }
 
-    setShowButton(false); // Esconde o botão ao trocar formação
-    setTotalOverall(0); // Reseta o overall ao mudar formação
+    setShowButton(false);
+    setTotalOverall(0);
   }, [state.formacao]);
 
   return (
@@ -185,7 +156,6 @@ export default function Campo() {
 
       <div className="campo">{renderizarFormacao()}</div>
 
-      {/* Seleção de formação */}
       <div className="selecao-formacao">
         <label htmlFor="formacao-select">Escolha a formação:</label>
         <select
